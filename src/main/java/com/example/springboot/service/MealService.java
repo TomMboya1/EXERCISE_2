@@ -93,5 +93,17 @@ public class MealService {
         }
         return null;
     }
+    public static List<Meal> getMealsByPriceRange(double minPrice, double maxPrice) {
+        List<Meal> mealsInRange = new ArrayList<>();
+
+        // Simulated logic to filter meals within the specified price range
+        for (Meal meal : mealList) {
+            if (meal.getPrice() >= minPrice && meal.getPrice() <= maxPrice) {
+                mealsInRange.add(meal);
+            }
+        }
+
+        return mealsInRange;
+    }
 
 }

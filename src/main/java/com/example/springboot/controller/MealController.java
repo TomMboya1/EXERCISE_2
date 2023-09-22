@@ -67,9 +67,17 @@ public class MealController {
     }
     @GetMapping("/meal/description-match/{phrase}")
     public Meal getMealByDescriptionMatch(@PathVariable String phrase) {
-        // Assuming you have a service that provides a Meal object matching the description
+
         Meal meal = MealService.getMealByDescriptionMatch(phrase);
         return meal;
+    }
+    @GetMapping("/meal/price")
+    public List<Meal> getMealsByPriceRange(
+            @RequestParam(name = "min") double minPrice,
+            @RequestParam(name = "max") double maxPrice) {
+
+        List<Meal> meals = MealService.getMealsByPriceRange(minPrice, maxPrice);
+        return meals;
     }
 
 }
