@@ -51,7 +51,25 @@ public class MealController {
 
     @GetMapping("/secret-formula")
     public ResponseEntity<String> getSecretFormula() {
-        return ResponseEntity.ok("2 + 2 = 4");
+         return ResponseEntity.ok("2 + 2 = 4");
+    }
+    @GetMapping("/meals")
+    public List<Meal> getAllMeals() {
+        // Assuming you have a service that provides a list of Meal objects
+        List<Meal> meals = MealService.getAllMeals();
+        return meals;
+    }
+    @GetMapping("/meal/{name}")
+    public Meal getMealByName(@PathVariable String name) {
+        // Assuming you have a service that provides a Meal object by name
+        Meal meal = MealService.getMealByName(name);
+        return meal;
+    }
+    @GetMapping("/meal/description-match/{phrase}")
+    public Meal getMealByDescriptionMatch(@PathVariable String phrase) {
+        // Assuming you have a service that provides a Meal object matching the description
+        Meal meal = MealService.getMealByDescriptionMatch(phrase);
+        return meal;
     }
 
 }

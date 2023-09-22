@@ -57,5 +57,41 @@ public class MealService {
         } catch (UnirestException e) {
             throw new RuntimeException(e);
         }
+
     }
+    private static List<Meal> mealList = new ArrayList<>();
+
+    static {
+
+
+
+        mealList.add(new Meal("Chicken Curry", "Delicious chicken curry with rice", 1.5, true));
+
+    }
+
+    public static List<Meal> getAllMeals() {
+        return mealList;
+    }
+    public static Meal getMealByName(String name) {
+
+        for (Meal meal : mealList) {
+            if (meal.getName().equalsIgnoreCase(name)) {
+                return meal;
+            }
+        }
+        return null;
+    }
+    public static Meal getMealByDescriptionMatch(String phrase) {
+
+        for (Meal meal : mealList) {
+            String[] words = meal.getDescription().split("\\s+");
+            for (String word : words) {
+                if (word.equalsIgnoreCase(phrase)) {
+                    return meal;
+                }
+            }
+        }
+        return null;
+    }
+
 }
